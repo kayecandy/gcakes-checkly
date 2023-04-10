@@ -33,23 +33,11 @@ test.describe("Login Product Review", () => {
     });
 
     test("Login Review and Rating", async ({ page }) => {
-        await page.getByRole("button", { name: "Cakes", exact: true }).click();
+        await page.getByRole('link', { name: 'Cakes', exact: true }).getByRole('button', { name: 'Cakes' }).click();
         await page.getByRole("link", { name: "Number Cake" }).click();
         await page.getByRole("button", { name: "Add a review" }).click();
 
-        // await page.locator('label').filter({ hasText: '0.5 Stars' }).click();
-        // await page.locator('label').filter({ hasText: '1 Star' }).click();
-        // await page.locator('label').filter({ hasText: '1.5 Stars' }).click();
-        // await page.locator('label').filter({ hasText: '2 Stars' }).click();
-        // await page.locator('label').filter({ hasText: '2.5 Stars' }).click();
-        // await page.locator('label').filter({ hasText: '3 Stars' }).click();
-        // await page.locator('label').filter({ hasText: '3 Stars' }).click();
-        // await page.locator('label').filter({ hasText: '4 Stars' }).click();
-        // await page.locator('label').filter({ hasText: '4.5 Stars' }).click();
-        await page
-            .locator("label")
-            .filter({ hasText: /^5 Stars$/ })
-            .click();
+        await page.locator('label[for=":r2d:"]').click();
 
         await page.getByLabel("Title *").click();
         await page.getByLabel("Title *").fill("AutoQA Title");
@@ -75,7 +63,7 @@ test.describe("Login Product Review", () => {
     });
 
     test("Login Review w/o Rating", async ({ page }) => {
-        await page.getByRole("button", { name: "Cakes", exact: true }).click();
+        await page.getByRole('link', { name: 'Cakes', exact: true }).getByRole('button', { name: 'Cakes' }).click();
         await page.getByRole("link", { name: "Number Cake" }).click();
         await page.getByRole("button", { name: "Add a review" }).click();
 
@@ -117,7 +105,7 @@ test.describe("No Login Product Review", () => {
     });
 
     test("No Login Review", async ({ page }) => {
-        await page.getByRole("button", { name: "Cakes", exact: true }).click();
+        await page.getByRole('link', { name: 'Cakes', exact: true }).getByRole('button', { name: 'Cakes' }).click();
         await page.getByRole("link", { name: "Number Cake" }).click();
         await page.getByRole("button", { name: "Add a review" }).click();
         await page.getByRole("button", { name: "Login to add a review" }).click();
