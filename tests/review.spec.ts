@@ -37,7 +37,7 @@ test.describe("Login Product Review", () => {
         await page.getByRole("link", { name: "Number Cake" }).click();
         await page.getByRole("button", { name: "Add a review" }).click();
 
-        await page.locator('label[for=":r2d:"]').click();
+        await page.locator('label').filter({ hasText: '3 Stars' }).dispatchEvent('click');
 
         await page.getByLabel("Title *").click();
         await page.getByLabel("Title *").fill("AutoQA Title");
