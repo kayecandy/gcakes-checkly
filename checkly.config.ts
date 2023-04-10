@@ -5,13 +5,13 @@ import { defineConfig } from '@checkly/cli';
  */
 const config = defineConfig({
   /* A human friendly name for your project */
-  projectName: 'Advanced Example Project',
+  projectName: 'Gcakes e2e',
   /** A logical ID that needs to be unique across your Checkly account,
    * See https://www.checklyhq.com/docs/cli/constructs/ to learn more about logical IDs.
    */
-  logicalId: 'advanced-example-project',
+  logicalId: 'gcakes-e2e',
   /* An optional URL to your Git repo */
-  repoUrl: 'https://github.com/checkly/checkly-cli',
+  repoUrl: 'https://github.com/kayecandy/gcakes-checkly',
   /* Sets default values for Checks */
   checks: {
     /* A default for how often your Check should run in minutes */
