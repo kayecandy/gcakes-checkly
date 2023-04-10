@@ -7,7 +7,12 @@ test.describe("Login Product Review", () => {
         await page.goto(
             process.env.ENVIRONMENT_URL ?? "https://gcakes-fe.vercel.app/"
         );
-        await page.locator("#sp-form-222665").getByRole("button").first().click();
+        try{
+            await page.locator("#sp-form-222665").getByRole("button").first().click({
+                timeout: 10000
+            });
+        }catch(e){
+        }
         await page.getByTestId("menuAccount").click();
         await page.getByTestId("inputUsername").click();
         await page.getByTestId("inputUsername").fill("Autoqa1");
@@ -103,7 +108,12 @@ test.describe("No Login Product Review", () => {
         await page.goto(
             process.env.ENVIRONMENT_URL ?? "https://gcakes-fe.vercel.app/"
         );
-        await page.locator("#sp-form-222665").getByRole("button").first().click();
+        try{
+            await page.locator("#sp-form-222665").getByRole("button").first().click({
+                timeout: 10000
+            });
+        }catch(e){
+        }
     });
 
     test("No Login Review", async ({ page }) => {
