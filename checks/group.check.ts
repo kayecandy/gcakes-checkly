@@ -44,3 +44,11 @@ new BrowserCheck("registration-check", {
   },
   group: group
 })
+
+new BrowserCheck("review-check", {
+  name: "Review Check",
+  code: {
+    entrypoint: '../tests/review.spec.ts'
+  },
+  group: group
+})
