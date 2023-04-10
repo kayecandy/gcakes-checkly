@@ -1,56 +1,26 @@
-# Checkly Monitoring-as-code: Advanced Project
+# Checkly integration for GCakes
 
-This example project shows how you can use the Checkly CLI in a monitoring as code (MaC) workflow. We are using the
-https://checklyhq.com website as a monitoring target.
+## Installation and usage
+- Run `npm i` to install dependencies
 
-1. Write API Checks and Playwright-powered Browser Checks.
-2. Add Alert Channels, and dry-run your Checks on 20+ global locations.
-3. Test -> Deploy: now you have your app monitored around the clock. All from your code base.
+- Running `npx checkly test` will look for `.check.ts` files and `.spec.ts` in `/tests` directories and execute them in a dry run.
 
-```
-npm create @checkly/cli -- --template advanced-project
-```
+- Running `npx check deploy` will deploy your checks to Checkly
 
-## Project Structure
 
-This project mimics a typical app where you organize code with top-level defaults and per page, service or component checks.
+## To add tests:
+1. Create `<filename>.spec.ts` in `/tests` directory and write your playwright tests
+2. Add your test in `checks/group.check.ts`. For example:
 
 ```
-.
-|-- .github
-|   `-- workflow.yml
-|-- checkly.config.ts
-|-- package.json
-`-- src
-    |-- __checks__
-    |   |  `-- utils
-    |   |      |-- auth-client.ts
-    |   |      `-- setup.ts
-    |   |          
-    |   |-- 404.spec.ts
-    |   |-- api.check.ts
-    |   |-- home.check.ts 
-    |   |-- homepage.spec.ts     
-    |   `-- website.check-group.ts
-    |-- alert-channels.ts
-    |-- defaults.ts
-    `-- services
-        |-- api
-        |   `-- __checks__        
-        |       `-- api.check.ts
-        `-- docs
-            `-- __checks__
-                `-- docs-search.spec.ts
-
+new BrowserCheck("id-of-test", {
+  name: "Name of test",
+  code: {
+    entrypoint: '../tests/<name-of-test>.spec.ts'
+  },
+  group: group
+})
 ```
-
-- Running `npx checkly test` will look for `.check.ts` files and `.spec.ts` in `__checks__` directories and execute them in a dry run.
-
-- Running `npx check deploy` will deploy your checks to Checkly, attach alert channels, and run them on a 10m schedule in the 
-region `us-east-1` and `eu-west-1`
-
-- An example GitHub Actions workflow is in the `.github/workflow.yml` file. It triggers all the checks in the project and deploys
-them if they pass.
 
 ## CLI Commands
 
@@ -65,16 +35,7 @@ Run the core CLI commands with `npx checkly <command>`
 
 [Check the docs for the full CLI reference](https://www.checklyhq.com/docs/cli/command-line-reference/).
 
-## Adding and running `@playwright/test`
+## To use local Playwright
 
-You can add `@playwright/test` to this project to get full code completion and run `.spec.ts` files for local debugging.
-It's best to install the Playwright npm package version that matches your [Checkly runtime](https://www.checklyhq.com/docs/cli/npm-packages/).
-
-```bash
-npm install --save-dev @playwright/test@1.28.0
-```
-
-## Questions?
-
-Check [our CLI docs](https://github.com/checkly/checkly-cli), the [main Checkly docs](https://checklyhq.com/docs) or 
-join our [Slack community](https://checklyhq.com/slack).
+> To run Playwright tests locally, install the [Playwright Test for VSCode](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright) plugin
+> and run tests using the plugin.
