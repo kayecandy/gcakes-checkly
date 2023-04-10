@@ -13,7 +13,14 @@ test.describe("Register", () => {
     await page.goto(
       process.env.ENVIRONMENT_URL ?? "https://gcakes-fe.vercel.app/"
     );
-    await page.locator("#sp-form-222665").getByRole("button").first().click();
+    try{
+
+      await page.locator("#sp-form-222665").getByRole("button").first().click({
+        timeout: 10000
+      });
+    }catch(e){
+
+    }
     await page.getByTestId("menuAccount").click();
     await page.getByRole("link", { name: "Register Now!" }).click();
   });
