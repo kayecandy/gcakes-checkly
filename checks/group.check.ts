@@ -52,3 +52,11 @@ new BrowserCheck("review-check", {
   },
   group: group
 })
+
+new BrowserCheck("addtocart-check", {
+  name: "Add to Cart Check",
+  code: {
+    entrypoint: '../tests/addtocart.spec.ts'
+  },
+  group: group
+})
