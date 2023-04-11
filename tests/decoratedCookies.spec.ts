@@ -17,23 +17,25 @@ test.describe("Individual Product", () => {
 
     }
   });
-  test("Individual product (Cakes)", async ({
+ 
+
+  test("Clicking the decorated cookies button ", async ({
     page,
   }) => {
     //await page.goto('http://localhost:3000/product/view/4k4Y2F15Y50pcdM8MeJbf6'); 
-    await page.getByRole('link', { name: 'Cakes', exact: true }).getByRole('button', { name: 'Cakes' }).click();
-    await page.getByRole('link', { name: 'Number Cake' }).click();
+    await page.getByRole('button', { name: 'Decorated Cookies' }).click();
 
-    await expect(page).toHaveURL(/.*\/product\/view\/4k4Y2F15Y50pcdM8MeJbf6/);
+    await expect(page).toHaveURL(/.*\/decorated-cookies/);
   })
 
-  test("Backend Call (blocked)", async ({
+  test("From index to individual decorated cookie", async ({
     page,
   }) => {
-   await page.route("**/products/type/cakes/", route => route.fulfill({status: 500}));
-   //await page.goto('http://localhost:3000');
-   //page.on("request", request => request.)
-   await page.getByRole('link', { name: 'Cakes', exact: true }).getByRole('button', { name: 'Cakes' }).click();
+    await page.getByRole('button', { name: 'Decorated Cookies' }).click();
+    await page.getByRole('link', { name: 'Decorated Cookies' }).nth(1).click();
+
+    await expect(page).toHaveURL(/.*\/product\/view\/68POhW9D5r1pEFfhC26nHc/);
   })
+
 })
 
