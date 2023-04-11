@@ -29,14 +29,6 @@ new BrowserCheck("about-check", {
   group: group
 })
 
-new BrowserCheck("product-check", {
-  name: "Product Check",
-  code: {
-    entrypoint: '../tests/product.spec.ts'
-  },
-  group: group
-})
-
 new BrowserCheck("registration-check", {
   name: "Registration Check",
   code: {
@@ -57,6 +49,38 @@ new BrowserCheck("addtocart-check", {
   name: "Add to Cart Check",
   code: {
     entrypoint: '../tests/addtocart.spec.ts'
+  },
+  group: group
+})
+
+new BrowserCheck("cakes-check", {
+  name: "Cakes Page Check",
+  code: {
+    entrypoint: '../tests/cakes.spec.ts'
+  },
+  group: group
+})
+
+new BrowserCheck("decoratedCookies-check", {
+  name: "Decorated Cookies Page Check",
+  code: {
+    entrypoint: '../tests/decoratedCookies.spec.ts'
+  },
+  group: group
+})
+
+new BrowserCheck("cupcakes-check", {
+  name: "Cupcakes Page Check",
+  code: {
+    entrypoint: '../tests/cupcakes.spec.ts'
+  },
+  group: group
+})
+
+new BrowserCheck("product-check", {
+  name: "Product Page Check",
+  code: {
+    entrypoint: '../tests/product.spec.ts'
   },
   group: group
 })
